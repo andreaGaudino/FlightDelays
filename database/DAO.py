@@ -69,3 +69,22 @@ class DAO():
         cursor.close()
         conn.close()
         return result
+
+    @staticmethod
+    def getAllEdgesV2(idMap):
+        conn = DBConnect.get_connection()
+
+        result = []
+
+        cursor = conn.cursor(dictionary=True)
+        query = """select """
+
+        cursor.execute(query)
+
+        for row in cursor:
+            result.append(
+                Connessione(idMap[row["ORIGIN_AIRPORT_ID"]], idMap[row["DESTINATION_AIRPORT_ID"]], row["count(*)"]))
+
+        cursor.close()
+        conn.close()
+        return result

@@ -9,7 +9,8 @@ class Controller:
         self._model = model
 
     def handelAnalizza(self, e):
-        pass
+        nMin = self._view._txtInNumC.value
+        self._model.buildGraph(int(nMin))
 
     def handleConnessi(self, e):
         pass
